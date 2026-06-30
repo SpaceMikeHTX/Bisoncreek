@@ -1,43 +1,158 @@
 const navToggle = document.querySelector('.nav-toggle');
 const nav = document.querySelector('.site-nav');
 
-navToggle.addEventListener('click', () => {
-  const isOpen = nav.classList.toggle('open');
-  navToggle.setAttribute('aria-expanded', String(isOpen));
-});
+if (navToggle && nav) {
+  navToggle.addEventListener('click', () => {
+    const isOpen = nav.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', String(isOpen));
+  });
+}
 
 document.querySelectorAll('.site-nav a').forEach(link => {
   link.addEventListener('click', () => {
+    if (!nav || !navToggle) return;
     nav.classList.remove('open');
     navToggle.setAttribute('aria-expanded', 'false');
   });
 });
 
-document.getElementById('year').textContent = new Date().getFullYear();
+const year = document.getElementById('year');
+if (year) year.textContent = new Date().getFullYear();
 
-document.getElementById('contactForm').addEventListener('submit', function (event) {
+const galleries = {
+  corporate: {
+    category: 'Corporate',
+    title: 'People Behind the Operation',
+    images: ['corporate-01.jpg', 'corporate-02.jpg', 'corporate-03.jpg']
+  },
+  western: {
+    category: 'Western',
+    title: 'Ranch & Rodeo',
+    images: ['western-01.jpg', 'western-02.jpg', 'western-03.jpg', 'western-04.jpg']
+  },
+  industrial: {
+    category: 'Industrial',
+    title: 'Work in Motion',
+    images: ['industrial-01.jpg', 'industrial-02.jpg', 'industrial-03.jpg']
+  },
+  outdoor: {
+    category: 'Outdoor',
+    title: 'Field Stories',
+    images: ['outdoor-01.jpg', 'outdoor-02.jpg', 'outdoor-03.jpg', 'outdoor-04.jpg', 'outdoor-05.jpg']
+  },
+  brand: {
+    category: 'Brand',
+    title: 'Campaign Content',
+    images: ['brand-01.jpg', 'brand-02.jpg', 'brand-03.jpg']
+  }
+};
+
+const galleryModal = document.getElementById('galleryModal');
+const galleryCategory = document.getElementById('galleryCategory');
+const galleryTitle = document.getElementById('galleryTitle');
+const galleryCounter = document.getElementById('galleryCounter');
+const galleryImage = document.getElementById('galleryImage');
+const galleryThumbs = document.getElementById('galleryThumbs');
+const galleryPrev = document.querySelector('.gallery-prev');
+const galleryNext = document.querySelector('.gallery-next');
+let activeGallery = null;
+let activeIndex = 0;
+let lastFocusedProject = null;
+
+function imagePath(name) {
+  return `assets/portfolio/${name}`;
+}
+
+function renderGallery() {
+  if (!activeGallery || !galleryImage || !galleryThumbs) return;
+  const current = activeGallery.images[activeIndex];
+  galleryCategory.textContent = activeGallery.category;
+  galleryTitle.textContent = activeGallery.title;
+  galleryCounter.textContent = `Image ${activeIndex + 1} of ${activeGallery.images.length}`;
+  galleryImage.src = imagePath(current);
+  galleryImage.alt = `${activeGallery.title} image ${activeIndex + 1}`;
+  galleryThumbs.innerHTML = activeGallery.images.map((image, index) => `
+    <button type="button" class="${index === activeIndex ? 'active' : ''}" data-index="${index}" aria-label="Show image ${index + 1}">
+      <img src="${imagePath(image)}" alt="" loading="lazy" />
+    </button>
+  `).join('');
+}
+
+function openGallery(key, trigger) {
+  activeGallery = galleries[key];
+  if (!activeGallery || !galleryModal) return;
+  activeIndex = 0;
+  lastFocusedProject = trigger;
+  renderGallery();
+  galleryModal.hidden = false;
+  document.body.classList.add('gallery-open');
+  const closeButton = document.querySelector('.gallery-close');
+  if (closeButton) closeButton.focus();
+}
+
+function closeGallery() {
+  if (!galleryModal || !galleryImage) return;
+  galleryModal.hidden = true;
+  document.body.classList.remove('gallery-open');
+  activeGallery = null;
+  galleryImage.removeAttribute('src');
+  if (lastFocusedProject) lastFocusedProject.focus();
+}
+
+function stepGallery(direction) {
+  if (!activeGallery) return;
+  activeIndex = (activeIndex + direction + activeGallery.images.length) % activeGallery.images.length;
+  renderGallery();
+}
+
+document.querySelectorAll('[data-gallery]').forEach(project => {
+  project.addEventListener('click', () => openGallery(project.dataset.gallery, project));
+});
+
+if (galleryPrev) galleryPrev.addEventListener('click', () => stepGallery(-1));
+if (galleryNext) galleryNext.addEventListener('click', () => stepGallery(1));
+if (galleryThumbs) {
+  galleryThumbs.addEventListener('click', event => {
+    const button = event.target.closest('button[data-index]');
+    if (!button) return;
+    activeIndex = Number(button.dataset.index);
+    renderGallery();
+  });
+}
+
+document.querySelectorAll('[data-close-gallery]').forEach(closeControl => {
+  closeControl.addEventListener('click', closeGallery);
+});
+
+document.addEventListener('keydown', event => {
+  if (!galleryModal || galleryModal.hidden) return;
+  if (event.key === 'Escape') closeGallery();
+  if (event.key === 'ArrowLeft') stepGallery(-1);
+  if (event.key === 'ArrowRight') stepGallery(1);
+});
+
+const contactForm = document.getElementById('contactForm');
+if (contactForm) {
+  contactForm.addEventListener('submit', function (event) {
   event.preventDefault();
-
   const data = new FormData(this);
   const name = data.get('name');
   const company = data.get('company') || 'Not provided';
   const email = data.get('email');
   const project = data.get('project');
   const details = data.get('details');
-
   const subject = encodeURIComponent(`Project Inquiry: ${project}`);
-  const body = encodeURIComponent(
-`Name: ${name}
+  const body = encodeURIComponent(`Name: ${name}
 Company: ${company}
 Email: ${email}
 Project Type: ${project}
 
 Project Details:
-${details}`
-  );
-
-  document.getElementById('formStatus').textContent =
-    'Your email app is opening with the project details filled in.';
-
-  window.location.href = `mailto:hello@bisoncreekmedia.com?subject=${subject}&body=${body}`;
-});
+${details}`);
+  const formStatus = document.getElementById('formStatus');
+  if (formStatus) {
+    formStatus.textContent = 'Your email app is opening with the project details filled in.';
+  }
+  window.location.href = `mailto:Michael@Bisoncreekmedia.com?subject=${subject}&body=${body}`;
+  });
+}
