@@ -26,7 +26,7 @@ button, input, textarea, select { font: inherit; }
 .nav-cta { border: 1px solid var(--gold); padding: 10px 16px; }
 .nav-toggle { display:none; background:none; border:0; padding:8px; }
 .nav-toggle span { display:block; width:25px; height:2px; margin:5px; background:white; }
-.hero { position: relative; min-height: 900px; display: grid; align-items: center; color: white; background: linear-gradient(110deg, rgba(18,18,15,.96) 0%, rgba(18,18,15,.84) 52%, rgba(18,18,15,.35) 100%), radial-gradient(circle at 80% 30%, #8f613f, #29231c 45%, #151511 100%); overflow: hidden; }
+.hero { position: relative; min-height: 900px; display: grid; align-items: center; color: white; background: linear-gradient(110deg, rgba(18,18,15,.96) 0%, rgba(18,18,15,.86) 45%, rgba(18,18,15,.46) 76%, rgba(18,18,15,.62) 100%), linear-gradient(0deg, rgba(18,18,15,.76) 0%, rgba(18,18,15,.12) 50%, rgba(18,18,15,.18) 100%), url("assets/hero/landing-hero.jpg"); background-size: cover; background-position: center center; overflow: hidden; }
 .hero::after { content:""; position:absolute; inset:0; opacity:.13; background-image: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(255,255,255,.06) 4px); pointer-events:none; }
 .hero-grid { position:relative; z-index:2; display:grid; grid-template-columns: 1.35fr .65fr; gap:60px; align-items:end; padding-top:130px; padding-bottom:80px; }
 .eyebrow { margin:0 0 14px; color:var(--gold); font-weight:800; text-transform:uppercase; letter-spacing:.18em; font-size:.78rem; }
@@ -168,6 +168,22 @@ footer { background:#11110f; color:white; padding:60px 0; }
 .btn-disabled { border-color:rgba(255,255,255,.22); background:transparent; color:rgba(255,255,255,.52); cursor:not-allowed; }
 .signup-card.available { box-shadow:0 0 0 1px rgba(197,150,69,.34); }
 
+.workshop-gallery-section { background:var(--ink); padding:0 0 92px; }
+.workshop-gallery-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+.workshop-gallery-item { display:block; width:100%; min-width:0; padding:0; border:1px solid rgba(255,255,255,.14); background:#11110f; cursor:pointer; aspect-ratio:4/5; overflow:hidden; }
+.workshop-gallery-item img { width:100%; height:100%; object-fit:cover; display:block; transform:scale(1.001); transition:transform .28s ease, filter .28s ease; }
+.workshop-gallery-item:hover img, .workshop-gallery-item:focus-visible img { transform:scale(1.045); filter:contrast(1.05) saturate(1.04); }
+.workshop-gallery-item:focus-visible { outline:2px solid var(--gold); outline-offset:3px; }
+.workshop-lightbox { position:fixed; inset:0; z-index:60; display:grid; grid-template-columns:minmax(54px, 8vw) minmax(0, 1fr) minmax(54px, 8vw); align-items:center; gap:12px; padding:64px 22px 28px; background:rgba(10,10,9,.94); }
+.workshop-lightbox[hidden] { display:none; }
+.workshop-lightbox img { grid-column:2; width:100%; max-height:calc(100vh - 112px); object-fit:contain; justify-self:center; background:#11110f; }
+.workshop-lightbox-close, .workshop-lightbox-control { border:1px solid rgba(255,255,255,.22); background:#211f1b; color:white; cursor:pointer; transition:border-color .2s ease, color .2s ease, background .2s ease; }
+.workshop-lightbox-close:hover, .workshop-lightbox-control:hover, .workshop-lightbox-close:focus-visible, .workshop-lightbox-control:focus-visible { border-color:var(--gold); color:var(--gold); outline:0; }
+.workshop-lightbox-close { position:absolute; top:18px; right:18px; width:46px; height:46px; font-size:2rem; line-height:1; }
+.workshop-lightbox-control { width:100%; min-height:72px; font-size:3.4rem; line-height:1; }
+.workshop-lightbox-prev { grid-column:1; }
+.workshop-lightbox-next { grid-column:3; }
+
 .reviews-section { background:var(--rust); color:white; }
 .review-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:18px; }
 .review-grid blockquote { margin:0; min-height:260px; display:flex; align-items:end; border:1px solid rgba(255,255,255,.2); padding:32px; background:rgba(0,0,0,.12); }
@@ -191,7 +207,7 @@ footer { background:#11110f; color:white; padding:60px 0; }
   .site-nav { position:absolute; top:76px; left:0; right:0; display:none; flex-direction:column; align-items:stretch; background:#171714; padding:22px; }
   .site-nav.open { display:flex; }
   .hero-grid, .about-grid, .contact-grid { grid-template-columns:1fr; }
-  .hero { min-height:auto; }
+  .hero { min-height:auto; background-position:center top; }
   .hero-grid { padding-top:170px; }
   .hero-card { max-width:520px; }
   .statement-grid { grid-template-columns:1fr; }
@@ -207,11 +223,13 @@ footer { background:#11110f; color:white; padding:60px 0; }
   .workshop-hero-grid { padding-top:170px; }
   .workshop-hero-card { max-width:620px; }
   .scene-grid, .signup-grid { grid-template-columns:1fr; }
+  .workshop-gallery-grid { grid-template-columns:repeat(2,1fr); }
   .review-grid { grid-template-columns:1fr; }
 }
 @media (max-width: 640px) {
   .container { width:min(calc(100% - 28px), var(--max)); }
   .brand-text { display:none; }
+  .hero { background-image: linear-gradient(180deg, rgba(18,18,15,.88) 0%, rgba(18,18,15,.8) 52%, rgba(18,18,15,.94) 100%), url("assets/hero/landing-hero.jpg"); background-position:center top; }
   .hero h1 { font-size:3.7rem; }
   .hero-proof { grid-template-columns:1fr; }
   .service-grid, .process-grid { grid-template-columns:1fr; }
@@ -230,6 +248,14 @@ footer { background:#11110f; color:white; padding:60px 0; }
   .workshop-hero-copy h1 { font-size:3.45rem; }
   .workshop-hero-card, .signup-card-body, .review-grid blockquote { padding:22px; }
   .scene-card { min-height:auto; }
+  .workshop-gallery-section { padding-bottom:60px; }
+  .workshop-gallery-grid { grid-template-columns:1fr; gap:10px; }
+  .workshop-gallery-item { aspect-ratio:5/4; }
+  .workshop-lightbox { grid-template-columns:1fr 1fr; align-content:center; padding:72px 14px 18px; }
+  .workshop-lightbox img { grid-column:1 / -1; grid-row:1; max-height:68vh; }
+  .workshop-lightbox-prev { grid-column:1; grid-row:2; }
+  .workshop-lightbox-next { grid-column:2; grid-row:2; }
+  .workshop-lightbox-control { min-height:52px; font-size:2.4rem; }
   .review-grid blockquote { min-height:220px; }
   .faq-list details { padding:0 16px; }
   .contact-form { grid-template-columns:1fr; }

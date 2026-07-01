@@ -131,6 +131,69 @@ document.addEventListener('keydown', event => {
   if (event.key === 'ArrowRight') stepGallery(1);
 });
 
+const workshopGalleryItems = Array.from(document.querySelectorAll('[data-workshop-gallery-index]'));
+const workshopLightbox = document.getElementById('workshopLightbox');
+const workshopLightboxImage = document.getElementById('workshopLightboxImage');
+const workshopLightboxClose = document.querySelector('.workshop-lightbox-close');
+const workshopLightboxPrev = document.querySelector('.workshop-lightbox-prev');
+const workshopLightboxNext = document.querySelector('.workshop-lightbox-next');
+let activeWorkshopImage = 0;
+let lastFocusedWorkshopImage = null;
+
+function renderWorkshopLightbox() {
+  if (!workshopLightboxImage || !workshopGalleryItems.length) return;
+  const image = workshopGalleryItems[activeWorkshopImage].querySelector('img');
+  if (!image) return;
+  workshopLightboxImage.src = image.currentSrc || image.src;
+  workshopLightboxImage.alt = '';
+}
+
+function openWorkshopLightbox(index, trigger) {
+  if (!workshopLightbox || !workshopGalleryItems.length) return;
+  activeWorkshopImage = index;
+  lastFocusedWorkshopImage = trigger;
+  renderWorkshopLightbox();
+  workshopLightbox.hidden = false;
+  document.body.classList.add('gallery-open');
+  if (workshopLightboxClose) workshopLightboxClose.focus();
+}
+
+function closeWorkshopLightbox() {
+  if (!workshopLightbox || !workshopLightboxImage) return;
+  workshopLightbox.hidden = true;
+  document.body.classList.remove('gallery-open');
+  workshopLightboxImage.removeAttribute('src');
+  if (lastFocusedWorkshopImage) lastFocusedWorkshopImage.focus();
+}
+
+function stepWorkshopLightbox(direction) {
+  if (!workshopGalleryItems.length || !workshopLightbox || workshopLightbox.hidden) return;
+  activeWorkshopImage = (activeWorkshopImage + direction + workshopGalleryItems.length) % workshopGalleryItems.length;
+  renderWorkshopLightbox();
+}
+
+workshopGalleryItems.forEach(item => {
+  item.addEventListener('click', () => {
+    openWorkshopLightbox(Number(item.dataset.workshopGalleryIndex), item);
+  });
+});
+
+if (workshopLightboxClose) workshopLightboxClose.addEventListener('click', closeWorkshopLightbox);
+if (workshopLightboxPrev) workshopLightboxPrev.addEventListener('click', () => stepWorkshopLightbox(-1));
+if (workshopLightboxNext) workshopLightboxNext.addEventListener('click', () => stepWorkshopLightbox(1));
+if (workshopLightbox) {
+  workshopLightbox.addEventListener('click', event => {
+    if (event.target === workshopLightbox) closeWorkshopLightbox();
+  });
+}
+
+document.addEventListener('keydown', event => {
+  if (!workshopLightbox || workshopLightbox.hidden) return;
+  if (event.key === 'Escape') closeWorkshopLightbox();
+  if (event.key === 'ArrowLeft') stepWorkshopLightbox(-1);
+  if (event.key === 'ArrowRight') stepWorkshopLightbox(1);
+});
+
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
   contactForm.addEventListener('submit', function (event) {
