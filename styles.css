@@ -9,10 +9,11 @@
   --max: 1180px;
 }
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body { margin: 0; background: var(--paper); color: var(--ink); font-family: Inter, Arial, sans-serif; line-height: 1.6; }
+html { scroll-behavior: smooth; overflow-x:hidden; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: Inter, Arial, sans-serif; line-height: 1.6; overflow-x:hidden; }
 body.gallery-open { overflow: hidden; }
 img { max-width: 100%; display: block; }
+.sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
 a { color: inherit; text-decoration: none; }
 button, input, textarea, select { font: inherit; }
 .container { width: min(calc(100% - 40px), var(--max)); margin-inline: auto; }
@@ -202,6 +203,76 @@ footer { background:#11110f; color:white; padding:60px 0; }
 .workshop-cta-inner { max-width:950px; }
 .workshop-cta h2 { margin:0 auto 26px; font-family:"Libre Franklin", Inter, sans-serif; font-size:clamp(2.7rem, 6vw, 6rem); line-height:.98; letter-spacing:-.045em; }
 
+.outdoorsman-hero { position:relative; min-height:900px; display:grid; align-items:end; color:white; overflow:hidden; background:#171714; }
+.outdoorsman-hero-media { position:absolute; inset:0; }
+.outdoorsman-hero-media::after { content:""; position:absolute; inset:0; background:linear-gradient(100deg, rgba(18,18,15,.96) 0%, rgba(18,18,15,.86) 46%, rgba(18,18,15,.42) 78%, rgba(18,18,15,.62) 100%), linear-gradient(0deg, rgba(18,18,15,.72), rgba(18,18,15,.08) 58%); }
+.outdoorsman-hero-media img { width:100%; height:100%; object-fit:cover; object-position:center; filter:saturate(.95) contrast(1.06); }
+.outdoorsman-hero-grid { position:relative; z-index:1; display:grid; grid-template-columns:1.2fr .72fr; gap:58px; align-items:end; padding-top:150px; padding-bottom:78px; }
+.outdoorsman-hero-grid > *, .outdoorsman-intro-grid > *, .conversion-grid > * { min-width:0; }
+.outdoorsman-hero h1, .outdoorsman-intro h2, .conversion-section h2, .final-signup-section h2 { margin:0; font-family:"Libre Franklin", Inter, sans-serif; line-height:.96; letter-spacing:-.045em; text-transform:uppercase; }
+.outdoorsman-hero h1 { max-width:980px; font-size:clamp(4rem, 8.5vw, 8rem); }
+.outdoorsman-workshop-icon { width:150px; height:auto; margin-bottom:24px; filter:drop-shadow(0 14px 28px rgba(0,0,0,.42)); }
+.outdoorsman-card { border:1px solid rgba(255,255,255,.18); background:rgba(0,0,0,.38); backdrop-filter:blur(8px); padding:34px; }
+.outdoorsman-card ul { margin:0; padding:0; list-style:none; }
+.outdoorsman-card li { padding:13px 0; border-top:1px solid rgba(255,255,255,.14); color:rgba(255,255,255,.78); }
+.outdoorsman-proof { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:48px; border-top:1px solid rgba(255,255,255,.18); padding-top:20px; }
+.outdoorsman-proof strong, .outdoorsman-proof span { display:block; }
+.outdoorsman-proof strong { font-size:.9rem; }
+.outdoorsman-proof span { margin-top:4px; color:rgba(255,255,255,.58); font-size:.75rem; }
+.outdoorsman-intro { background:var(--cream); }
+.outdoorsman-intro-grid { display:grid; grid-template-columns:1.08fr .92fr; gap:70px; align-items:start; }
+.outdoorsman-intro h2 { color:var(--ink); font-size:clamp(2.8rem, 5vw, 5.2rem); }
+.outdoorsman-intro-copy { display:grid; gap:20px; align-content:start; }
+.outdoorsman-intro-copy p { margin:0; color:#5c584f; font-size:1.08rem; }
+.outdoorsman-intro-copy .btn { width:max-content; max-width:100%; }
+.outdoorsman-image-strip { background:#11110f; padding:0; }
+.outdoorsman-image-grid { display:grid; grid-template-columns:1.1fr .9fr .7fr; gap:14px; padding:80px 0; }
+.outdoorsman-image-grid img, .image-slot { min-height:420px; width:100%; height:100%; object-fit:cover; background:#24231f; border:1px solid rgba(255,255,255,.14); }
+.image-slot { display:grid; place-items:center; color:rgba(255,255,255,.58); text-align:center; }
+.image-slot span { font-size:.74rem; font-weight:800; letter-spacing:.14em; text-transform:uppercase; }
+.shoot-day-section { background:var(--paper); }
+.shoot-day-grid { display:grid; grid-template-columns:repeat(3,1fr); border-top:1px solid var(--line); border-left:1px solid var(--line); }
+.shoot-day-button { margin:-20px 0 34px; }
+.shoot-day-grid article { min-height:370px; padding:30px; border-right:1px solid var(--line); border-bottom:1px solid var(--line); background:#fffaf0; }
+.shoot-day-grid span { color:var(--rust); font-family:"Bebas Neue"; font-size:3rem; line-height:1; }
+.shoot-day-grid h3 { margin:76px 0 4px; font-size:1.7rem; line-height:1.05; }
+.shoot-day-grid small { display:block; margin-bottom:22px; color:#354121; font-family:"Bebas Neue"; font-size:1.3rem; line-height:1; letter-spacing:.04em; text-transform:uppercase; }
+.shoot-day-grid p { margin:0; color:#6d675c; }
+.coordinator-section { background:var(--cream); }
+.coordinator-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+.coordinator-card { display:grid; grid-template-rows:auto 1fr; min-width:0; background:#fffaf0; border:1px solid var(--line); }
+.coordinator-card img { width:100%; aspect-ratio:4/5; object-fit:cover; background:#24231f; }
+.coordinator-card-body { display:grid; align-content:start; padding:28px; }
+.coordinator-card h3 { margin:0 0 14px; font-size:1.45rem; line-height:1.1; }
+.coordinator-card p { margin:0; color:#6d675c; }
+.coordinator-links { display:flex; flex-wrap:wrap; gap:10px; margin-top:24px; }
+.coordinator-links a { border:1px solid var(--line); padding:9px 12px; color:var(--ink); font-size:.74rem; font-weight:800; letter-spacing:.08em; text-transform:uppercase; transition:border-color .2s ease, color .2s ease, background .2s ease; }
+.coordinator-links a:hover, .coordinator-links a:focus-visible { border-color:var(--gold); color:var(--gold); background:#fff; outline:0; }
+.conversion-section { background:var(--ink); color:white; }
+.conversion-grid { display:grid; grid-template-columns:1fr 1fr; gap:70px; align-items:start; }
+.conversion-section h2 { font-size:clamp(2.7rem, 5vw, 5rem); }
+.conversion-section p { color:rgba(255,255,255,.68); font-size:1.07rem; }
+.conversion-list { display:grid; gap:12px; }
+.conversion-list div { border:1px solid rgba(255,255,255,.14); background:#211f1b; padding:24px; }
+.conversion-list strong, .conversion-list span { display:block; }
+.conversion-list strong { color:var(--gold); font-size:1.04rem; }
+.conversion-list span { margin-top:8px; color:rgba(255,255,255,.68); }
+.open-image-section { background:#e8e0d0; }
+.open-image-grid { display:grid; grid-template-columns:repeat(4,1fr); grid-auto-rows:minmax(230px, auto); gap:14px; }
+.open-image-grid img { width:100%; height:100%; min-height:260px; object-fit:cover; border:1px solid rgba(23,23,20,.16); background:#24231f; }
+.open-image-grid .image-slot { min-height:260px; color:#756a58; border-color:rgba(23,23,20,.16); background:linear-gradient(135deg, rgba(255,255,255,.24), rgba(23,23,20,.08)); }
+.open-image-grid .tall { grid-row:span 2; }
+.open-image-grid .wide { grid-column:span 2; }
+.partner-section { background:#11110f; color:white; }
+.partner-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+.partner-logo { min-height:150px; display:grid; place-items:center; border:1px solid rgba(255,255,255,.16); background:#211f1b; color:rgba(255,255,255,.62); transition:border-color .2s ease, color .2s ease, transform .2s ease; }
+.partner-logo:hover, .partner-logo:focus-visible { border-color:var(--gold); color:var(--gold); transform:translateY(-2px); outline:0; }
+.partner-logo span { font-weight:800; letter-spacing:.12em; text-transform:uppercase; font-size:.74rem; }
+.final-signup-section { background:var(--rust); color:white; text-align:center; }
+.final-signup-inner { max-width:900px; }
+.final-signup-section h2 { font-size:clamp(3rem, 7vw, 7rem); }
+.final-signup-section p:not(.eyebrow) { max-width:720px; margin:24px auto 30px; color:rgba(255,255,255,.78); font-size:1.08rem; }
+
 @media (max-width: 950px) {
   .nav-toggle { display:block; }
   .site-nav { position:absolute; top:76px; left:0; right:0; display:none; flex-direction:column; align-items:stretch; background:#171714; padding:22px; }
@@ -218,12 +289,17 @@ footer { background:#11110f; color:white; padding:60px 0; }
   .gallery-stage img { grid-column:1 / -1; grid-row:1; }
   .gallery-prev { grid-column:1; grid-row:2; }
   .gallery-next { grid-column:2; grid-row:2; }
-  .workshop-hero-grid, .faq-grid { grid-template-columns:1fr; }
+  .workshop-hero-grid, .faq-grid, .outdoorsman-hero-grid, .outdoorsman-intro-grid, .conversion-grid { grid-template-columns:1fr; }
   .workshop-hero { min-height:auto; }
   .workshop-hero-grid { padding-top:170px; }
   .workshop-hero-card { max-width:620px; }
+  .outdoorsman-hero { min-height:auto; }
+  .outdoorsman-hero-grid { padding-top:170px; }
+  .outdoorsman-card { max-width:620px; }
   .scene-grid, .signup-grid { grid-template-columns:1fr; }
   .workshop-gallery-grid { grid-template-columns:repeat(2,1fr); }
+  .outdoorsman-image-grid, .shoot-day-grid, .partner-grid, .coordinator-grid { grid-template-columns:repeat(2,1fr); }
+  .open-image-grid { grid-template-columns:repeat(2,1fr); }
   .review-grid { grid-template-columns:1fr; }
 }
 @media (max-width: 640px) {
@@ -246,7 +322,18 @@ footer { background:#11110f; color:white; padding:60px 0; }
   .gallery-stage img { height:52vh; }
   .gallery-thumbs { padding:0 14px 18px; grid-template-columns:repeat(4,1fr); }
   .workshop-hero-copy h1 { font-size:3.45rem; }
-  .workshop-hero-card, .signup-card-body, .review-grid blockquote { padding:22px; }
+  .outdoorsman-hero h1 { font-size:3.4rem; }
+  .outdoorsman-proof { grid-template-columns:1fr; }
+  .workshop-hero-card, .signup-card-body, .review-grid blockquote, .outdoorsman-card { padding:22px; }
+  .outdoorsman-hero-media img { object-position:58% top; }
+  .outdoorsman-image-grid, .shoot-day-grid, .partner-grid, .open-image-grid, .coordinator-grid { grid-template-columns:1fr; }
+  .outdoorsman-image-grid { padding:50px 0; }
+  .outdoorsman-image-grid img, .image-slot { min-height:280px; }
+  .shoot-day-grid article { min-height:auto; }
+  .shoot-day-grid h3 { margin-top:46px; }
+  .coordinator-card-body { padding:22px; }
+  .open-image-grid .tall, .open-image-grid .wide { grid-row:auto; grid-column:auto; }
+  .partner-logo { min-height:120px; }
   .scene-card { min-height:auto; }
   .workshop-gallery-section { padding-bottom:60px; }
   .workshop-gallery-grid { grid-template-columns:1fr; gap:10px; }
