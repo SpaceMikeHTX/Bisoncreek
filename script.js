@@ -194,6 +194,35 @@ document.addEventListener('keydown', event => {
   if (event.key === 'ArrowRight') stepWorkshopLightbox(1);
 });
 
+const topicTabs = Array.from(document.querySelectorAll('[data-topic-tab]'));
+const topicPanels = Array.from(document.querySelectorAll('.topic-panel'));
+
+function activateTopic(tab) {
+  const panelId = tab.dataset.topicTab;
+  topicTabs.forEach(topicTab => {
+    const isActive = topicTab === tab;
+    topicTab.classList.toggle('active', isActive);
+    topicTab.setAttribute('aria-selected', String(isActive));
+  });
+  topicPanels.forEach(panel => {
+    const isActive = panel.id === panelId;
+    panel.classList.toggle('active', isActive);
+    panel.hidden = !isActive;
+  });
+}
+
+topicTabs.forEach((tab, index) => {
+  tab.addEventListener('click', () => activateTopic(tab));
+  tab.addEventListener('keydown', event => {
+    if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+    event.preventDefault();
+    const direction = event.key === 'ArrowRight' ? 1 : -1;
+    const nextIndex = (index + direction + topicTabs.length) % topicTabs.length;
+    topicTabs[nextIndex].focus();
+    activateTopic(topicTabs[nextIndex]);
+  });
+});
+
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
   contactForm.addEventListener('submit', function (event) {

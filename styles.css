@@ -290,6 +290,65 @@ footer { background:#11110f; color:white; padding:60px 0; }
 .final-signup-section h2 { font-size:clamp(3rem, 7vw, 7rem); }
 .final-signup-section p:not(.eyebrow) { max-width:720px; margin:24px auto 30px; color:rgba(255,255,255,.78); font-size:1.08rem; }
 
+.articles-banner { position:relative; min-height:470px; display:grid; align-items:end; color:white; overflow:hidden; background:linear-gradient(100deg, rgba(17,17,15,.92), rgba(17,17,15,.66) 52%, rgba(17,17,15,.42)), linear-gradient(0deg, rgba(17,17,15,.7), rgba(17,17,15,.12)), url("assets/articles/banner-photo.jpg") center 42% / cover no-repeat; }
+.articles-banner-inner { padding-top:150px; padding-bottom:66px; position:relative; z-index:1; }
+.articles-banner h1 { max-width:950px; margin:0; font-family:"Libre Franklin", Inter, sans-serif; font-size:clamp(3.4rem, 8vw, 7.4rem); line-height:.96; letter-spacing:-.045em; text-transform:uppercase; }
+.articles-page .featured-article-section { padding-top:96px; }
+.featured-article-section { background:var(--paper); }
+.featured-article { display:grid; grid-template-columns:.92fr 1.08fr; min-height:500px; border:1px solid var(--line); background:#fffaf0; }
+.featured-article img, .featured-article-image { width:100%; height:100%; min-height:500px; object-fit:cover; background:#24231f; }
+.featured-article-image img { min-height:100%; }
+.featured-article-copy { display:grid; align-content:center; padding:44px; }
+.featured-article-copy h3, .article-card h3, .topic-panel h3, .topic-article-card h4, .article-cta-section h2 { margin:0; font-family:"Libre Franklin", Inter, sans-serif; line-height:1.02; letter-spacing:-.035em; }
+.featured-article-copy h3 { font-size:clamp(2.2rem, 4vw, 4.2rem); }
+.featured-article-copy p:not(.article-meta) { color:#635d52; font-size:1.04rem; }
+.article-meta { margin:0 0 14px; color:var(--rust); font-weight:800; text-transform:uppercase; letter-spacing:.14em; font-size:.72rem; }
+.topic-section { background:var(--ink); color:white; }
+.topic-section .section-heading > p { color:rgba(255,255,255,.65); }
+.topic-tabs { display:flex; flex-wrap:wrap; gap:10px; margin-bottom:18px; }
+.topic-tab { border:1px solid rgba(255,255,255,.18); background:rgba(255,255,255,.04); color:white; padding:13px 18px; font:800 .76rem/1 Inter, sans-serif; letter-spacing:.1em; text-transform:uppercase; cursor:pointer; transition:background .2s ease, border-color .2s ease, color .2s ease; }
+.topic-tab:hover, .topic-tab:focus-visible { border-color:var(--gold); color:var(--gold); outline:0; }
+.topic-tab.active { background:var(--gold); border-color:var(--gold); color:#171714; }
+.topic-panels { border:1px solid rgba(255,255,255,.15); }
+.topic-panel { display:block; padding:34px; }
+.topic-panel[hidden] { display:none; }
+.topic-panel-intro { display:grid; grid-template-columns:120px 1fr; gap:34px; align-items:end; margin-bottom:30px; }
+.topic-panel span { color:var(--gold); font-family:"Bebas Neue"; font-size:4.8rem; line-height:.85; }
+.topic-panel h3 { margin-bottom:14px; font-size:clamp(2.3rem, 5vw, 4.8rem); text-transform:uppercase; }
+.topic-panel p { max-width:840px; color:rgba(255,255,255,.68); font-size:1.08rem; }
+.topic-article-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+.topic-article-card { display:grid; align-content:start; min-height:250px; padding:22px; border:1px solid rgba(255,255,255,.15); background:rgba(255,255,255,.055); transition:background .2s ease, border-color .2s ease, transform .2s ease; }
+.topic-article-card:hover, .topic-article-card:focus-visible { border-color:var(--gold); background:rgba(255,255,255,.09); transform:translateY(-2px); outline:0; }
+.topic-article-card .article-meta { color:var(--gold); }
+.topic-article-card h4 { color:white; font-size:1.18rem; }
+.topic-article-card p:not(.article-meta) { margin:14px 0 0; color:rgba(255,255,255,.62); font-size:.95rem; }
+.article-library-section { background:#e8e0d0; }
+.article-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+.article-card { display:grid; grid-template-rows:auto 1fr; background:#fffaf0; border:1px solid var(--line); min-width:0; }
+.article-card a { display:grid; grid-template-rows:auto 1fr; height:100%; }
+.article-card a:hover h3, .article-card a:focus-visible h3 { color:var(--rust); }
+.article-card a:focus-visible { outline:3px solid var(--gold); outline-offset:4px; }
+.article-card img { width:100%; aspect-ratio:4/3; object-fit:cover; background:#24231f; }
+.article-card > div, .article-card a > div { padding:24px; }
+.article-card h3 { font-size:1.32rem; margin-bottom:12px; }
+.article-card p:not(.article-meta) { color:#6d675c; margin:0; }
+.article-cta-section { position:relative; isolation:isolate; background:#171714 url("assets/portfolio/western-01.jpg") center / cover no-repeat; color:white; text-align:center; overflow:hidden; }
+.article-cta-section::before { content:""; position:absolute; inset:0; z-index:-1; background:linear-gradient(105deg, rgba(17,17,15,.92), rgba(17,17,15,.72)); }
+.article-cta-inner { max-width:860px; }
+.article-cta-section h2 { font-size:clamp(3rem, 7vw, 6.6rem); text-transform:uppercase; }
+.article-cta-section p:not(.eyebrow) { max-width:720px; margin:24px auto 30px; color:rgba(255,255,255,.74); font-size:1.08rem; }
+.article-detail-header { padding:150px 0 76px; background:var(--paper); }
+.article-detail-grid { display:grid; grid-template-columns:1.05fr .95fr; gap:56px; align-items:end; }
+.article-detail-grid h1 { margin:18px 0 22px; font-family:"Libre Franklin", Inter, sans-serif; font-size:clamp(3rem, 6vw, 6.2rem); line-height:.96; letter-spacing:-.045em; text-transform:uppercase; }
+.article-detail-grid p:not(.article-meta) { max-width:740px; color:#625c51; font-size:1.08rem; }
+.article-detail-grid img { width:100%; min-height:520px; object-fit:cover; background:#24231f; border:1px solid var(--line); }
+.article-body { max-width:840px; padding:20px 0 110px; }
+.article-body p { margin:0 0 24px; color:#312f29; font-size:1.08rem; line-height:1.82; }
+.article-body p:first-child { font-size:1.22rem; color:#171714; }
+.article-body ul { margin:0 0 28px 22px; padding:0; color:#312f29; font-size:1.06rem; line-height:1.75; }
+.article-body li { margin-bottom:8px; }
+.article-detail-cta { background-image:url("assets/outdoorsman/outdoorsman-camp-01.jpg"); }
+
 @media (max-width: 950px) {
   .nav-toggle { display:block; }
   .site-nav { position:absolute; top:76px; left:0; right:0; display:none; flex-direction:column; align-items:stretch; background:#171714; padding:22px; }
@@ -313,9 +372,13 @@ footer { background:#11110f; color:white; padding:60px 0; }
   .outdoorsman-hero { min-height:auto; }
   .outdoorsman-hero-grid { padding-top:170px; }
   .outdoorsman-card { max-width:620px; }
+  .featured-article, .article-detail-grid { grid-template-columns:1fr; }
+  .featured-article img { min-height:360px; }
+  .article-detail-grid img { min-height:360px; }
   .scene-grid, .signup-grid { grid-template-columns:1fr; }
   .workshop-gallery-grid { grid-template-columns:repeat(2,1fr); }
   .outdoorsman-image-grid, .shoot-day-grid, .partner-grid, .coordinator-grid { grid-template-columns:repeat(2,1fr); }
+  .article-grid, .topic-article-grid { grid-template-columns:repeat(2,1fr); }
   .open-image-grid { grid-template-columns:repeat(2,1fr); }
   .review-grid { grid-template-columns:1fr; }
 }
@@ -341,13 +404,32 @@ footer { background:#11110f; color:white; padding:60px 0; }
   .workshop-hero-copy h1 { font-size:3.45rem; }
   .outdoorsman-hero h1 { font-size:3.4rem; }
   .outdoorsman-proof { grid-template-columns:1fr; }
-  .workshop-hero-card, .signup-card-body, .review-grid blockquote, .outdoorsman-card { padding:22px; }
+  .articles-banner { min-height:360px; background-position:center center; }
+  .articles-banner-inner { padding-top:128px; padding-bottom:44px; }
+  .articles-banner h1 { font-size:3.35rem; }
+  .articles-page .featured-article-section { padding-top:72px; }
+  .workshop-hero-card, .signup-card-body, .review-grid blockquote, .outdoorsman-card, .featured-article-copy, .article-card > div, .article-card a > div { padding:22px; }
   .outdoorsman-hero-media img { object-position:58% top; }
   .outdoorsman-image-grid, .shoot-day-grid, .partner-grid, .open-image-grid, .coordinator-grid { grid-template-columns:1fr; }
+  .article-grid, .topic-article-grid { grid-template-columns:1fr; }
   .outdoorsman-image-grid { padding:50px 0; }
   .outdoorsman-image-grid img, .image-slot { min-height:280px; }
   .shoot-day-grid article { min-height:auto; }
   .shoot-day-grid h3 { margin-top:46px; }
+  .topic-tabs { display:grid; grid-template-columns:1fr 1fr; }
+  .topic-tab { padding-inline:10px; }
+  .topic-panel { padding:18px; }
+  .topic-panel-intro { grid-template-columns:1fr; gap:18px; margin-bottom:22px; }
+  .topic-panel span { font-size:3.8rem; }
+  .topic-panel h3 { font-size:2.8rem; }
+  .topic-article-card { min-height:auto; padding:18px; }
+  .featured-article img { min-height:280px; }
+  .article-detail-header { padding:120px 0 52px; }
+  .article-detail-grid { gap:30px; }
+  .article-detail-grid h1 { font-size:3rem; }
+  .article-detail-grid img { min-height:300px; }
+  .article-body { padding-bottom:70px; }
+  .article-body p { font-size:1rem; line-height:1.75; }
   .coordinator-card-body { padding:22px; }
   .open-image-grid .tall, .open-image-grid .wide { grid-row:auto; grid-column:auto; }
   .partner-logo { min-height:120px; }
