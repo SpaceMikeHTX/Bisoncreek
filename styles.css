@@ -49,6 +49,9 @@ button, input, textarea, select { font: inherit; }
 .card-kicker { margin:0 0 22px; font-size:1.3rem; font-weight:700; line-height:1.35; }
 .hero-card ul { margin:0; padding:0; list-style:none; }
 .hero-card li { padding:13px 0; border-top:1px solid rgba(255,255,255,.14); color:rgba(255,255,255,.78); }
+@media (hover: hover) and (pointer: fine) {
+  .home-page .hero, .home-page .hero * { cursor:url("assets/brand/bison-creek-cursor.png") 24 24, auto; }
+}
 .statement { background:var(--cream); padding:100px 0; }
 .statement-grid { display:grid; grid-template-columns:.5fr 1.4fr 1fr; gap:40px; align-items:start; }
 .statement h2 { font-size:clamp(2.7rem, 5vw, 5rem); }
@@ -347,6 +350,9 @@ footer { background:#11110f; color:white; padding:60px 0; }
 .article-body p:first-child { font-size:1.22rem; color:#171714; }
 .article-body ul { margin:0 0 28px 22px; padding:0; color:#312f29; font-size:1.06rem; line-height:1.75; }
 .article-body li { margin-bottom:8px; }
+.article-workshop-links { display:flex; flex-wrap:wrap; gap:14px; margin-top:42px; padding-top:34px; border-top:1px solid var(--line); }
+.article-workshop-links .btn-ghost { border-color:var(--ink); color:var(--ink); }
+.article-workshop-links .btn-ghost:hover { border-color:var(--rust); color:var(--rust); }
 .article-detail-cta { background-image:url("assets/outdoorsman/outdoorsman-camp-01.jpg"); }
 
 @media (max-width: 950px) {
@@ -430,6 +436,7 @@ footer { background:#11110f; color:white; padding:60px 0; }
   .article-detail-grid img { min-height:300px; }
   .article-body { padding-bottom:70px; }
   .article-body p { font-size:1rem; line-height:1.75; }
+  .article-workshop-links .btn { width:100%; }
   .coordinator-card-body { padding:22px; }
   .open-image-grid .tall, .open-image-grid .wide { grid-row:auto; grid-column:auto; }
   .partner-logo { min-height:120px; }
