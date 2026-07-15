@@ -29,7 +29,7 @@ button, input, textarea, select { font: inherit; }
 .nav-toggle span { display:block; width:25px; height:2px; margin:5px; background:white; }
 .hero { position: relative; min-height: 900px; display: grid; align-items: center; color: white; background: linear-gradient(110deg, rgba(18,18,15,.96) 0%, rgba(18,18,15,.86) 45%, rgba(18,18,15,.46) 76%, rgba(18,18,15,.62) 100%), linear-gradient(0deg, rgba(18,18,15,.76) 0%, rgba(18,18,15,.12) 50%, rgba(18,18,15,.18) 100%), url("assets/hero/landing-hero.jpg"); background-size: cover; background-position: center center; overflow: hidden; }
 .hero::after { content:""; position:absolute; inset:0; opacity:.13; background-image: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(255,255,255,.06) 4px); pointer-events:none; }
-.hero-grid { position:relative; z-index:2; display:grid; grid-template-columns: 1.35fr .65fr; gap:60px; align-items:end; padding-top:130px; padding-bottom:80px; }
+.hero-grid { position:relative; z-index:2; display:grid; grid-template-columns:1fr; gap:60px; align-items:end; padding-top:130px; padding-bottom:80px; }
 .eyebrow { margin:0 0 14px; color:var(--gold); font-weight:800; text-transform:uppercase; letter-spacing:.18em; font-size:.78rem; }
 .eyebrow.dark { color:var(--rust); }
 .hero h1, .section h2, .statement h2 { font-family:"Libre Franklin", Inter, sans-serif; line-height:.98; letter-spacing:-.045em; margin:0; }
@@ -45,10 +45,6 @@ button, input, textarea, select { font: inherit; }
 .hero-proof strong, .hero-proof span { display:block; }
 .hero-proof strong { font-size:.9rem; }
 .hero-proof span { font-size:.75rem; color:rgba(255,255,255,.55); margin-top:4px; }
-.hero-card { border:1px solid rgba(255,255,255,.18); background:rgba(0,0,0,.22); padding:34px; }
-.card-kicker { margin:0 0 22px; font-size:1.3rem; font-weight:700; line-height:1.35; }
-.hero-card ul { margin:0; padding:0; list-style:none; }
-.hero-card li { padding:13px 0; border-top:1px solid rgba(255,255,255,.14); color:rgba(255,255,255,.78); }
 @media (hover: hover) and (pointer: fine) {
   .home-page .hero, .home-page .hero * { cursor:url("assets/brand/bison-creek-cursor.png") 24 24, auto; }
 }
@@ -74,11 +70,10 @@ button, input, textarea, select { font: inherit; }
 .project img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform .5s ease, filter .5s ease; }
 .project:hover img, .project:focus-visible img { transform:scale(1.04); filter:saturate(1.08) contrast(1.05); }
 .project:focus-visible { outline:3px solid var(--gold); outline-offset:4px; }
-.project-large { grid-column:span 7; min-height:600px; }
-.project-western { grid-column:span 5; }
-.project-industrial { grid-column:span 5; }
-.project-outdoor { grid-column:span 4; }
-.project-brand { grid-column:span 3; }
+.project-large { grid-column:span 7; min-height:560px; }
+.project-west-rodeo { grid-column:span 5; min-height:560px; }
+.project-brand { grid-column:span 4; min-height:430px; }
+.project-action { grid-column:span 8; min-height:430px; }
 .project-label { position:absolute; left:24px; right:24px; bottom:24px; z-index:2; color:white; display:grid; gap:4px; }
 .project-label span { font-size:.72rem; font-weight:800; letter-spacing:.16em; text-transform:uppercase; color:#f1c77c; }
 .project-label strong { display:block; font-size:1.65rem; line-height:1.1; }
@@ -362,10 +357,9 @@ footer { background:#11110f; color:white; padding:60px 0; }
   .hero-grid, .about-grid, .contact-grid { grid-template-columns:1fr; }
   .hero { min-height:auto; background-position:center top; }
   .hero-grid { padding-top:170px; }
-  .hero-card { max-width:520px; }
   .statement-grid { grid-template-columns:1fr; }
   .service-grid { grid-template-columns:repeat(2,1fr); }
-  .project-large, .project-western, .project-industrial, .project-outdoor, .project-brand { grid-column:span 6; }
+  .project-large, .project-west-rodeo, .project-brand, .project-action { grid-column:span 6; min-height:430px; }
   .section-heading { align-items:start; flex-direction:column; }
   .gallery-stage { grid-template-columns:1fr 1fr; }
   .gallery-stage img { grid-column:1 / -1; grid-row:1; }
@@ -399,7 +393,7 @@ footer { background:#11110f; color:white; padding:60px 0; }
   .service-card h3 { margin-top:55px; }
   .process-grid > div, .process-grid > div:not(:first-child) { border-right:0; border-bottom:1px solid var(--line); padding:28px 0; }
   .portfolio-grid { grid-template-columns:1fr; }
-  .project-large, .project-western, .project-industrial, .project-outdoor, .project-brand { grid-column:auto; min-height:390px; }
+  .project-large, .project-west-rodeo, .project-brand, .project-action { grid-column:auto; min-height:390px; }
   .gallery-modal { padding:10px; }
   .gallery-panel { max-height:calc(100vh - 20px); }
   .gallery-header { padding:22px 18px 14px; }

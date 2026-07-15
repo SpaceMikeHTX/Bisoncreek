@@ -23,27 +23,22 @@ const galleries = {
   corporate: {
     category: 'Corporate',
     title: 'People Behind the Operation',
-    images: ['corporate-01.jpg', 'corporate-02.jpg', 'corporate-03.jpg']
+    images: ['corporate-01.jpg', 'corporate-02.jpg', 'corporate-03.jpg', 'industrial-01.jpg', 'industrial-02.jpg', 'industrial-03.jpg']
   },
-  western: {
-    category: 'Western',
-    title: 'Ranch & Rodeo',
-    images: ['western-01.jpg', 'western-02.jpg', 'western-03.jpg', 'western-04.jpg']
-  },
-  industrial: {
-    category: 'Industrial',
-    title: 'Work in Motion',
-    images: ['industrial-01.jpg', 'industrial-02.jpg', 'industrial-03.jpg']
-  },
-  outdoor: {
-    category: 'Outdoor',
-    title: 'Field Stories',
-    images: ['outdoor-01.jpg', 'outdoor-02.jpg', 'outdoor-03.jpg', 'outdoor-04.jpg', 'outdoor-05.jpg']
+  westRodeo: {
+    category: 'West and Rodeo',
+    title: 'Ranch, rodeo, and field stories',
+    images: ['western-01.jpg', 'western-02.jpg', 'western-03.jpg', 'western-04.jpg', 'outdoor-01.jpg', 'outdoor-02.jpg', 'outdoor-03.jpg', 'outdoor-04.jpg', 'outdoor-05.jpg']
   },
   brand: {
     category: 'Brand',
     title: 'Campaign Content',
     images: ['brand-01.jpg', 'brand-02.jpg', 'brand-03.jpg']
+  },
+  action: {
+    category: 'Action Adventure',
+    title: 'Movement, grit, and momentum',
+    images: ['action-01.jpg', 'action-02.jpg', 'action-03.jpg', 'action-04.jpg', 'action-05.jpg', 'action-06.jpg', 'action-07.jpg', 'action-08.jpg', 'action-09.jpg', 'action-10.jpg', 'action-11.jpg', 'action-12.jpg']
   }
 };
 
