@@ -19,6 +19,32 @@ document.querySelectorAll('.site-nav a').forEach(link => {
 const year = document.getElementById('year');
 if (year) year.textContent = new Date().getFullYear();
 
+const clientCarousel = document.querySelector('[data-client-carousel]');
+const clientCarouselTrack = document.querySelector('[data-client-carousel-track]');
+const clientLogoSet = document.querySelector('[data-client-logo-set]');
+const clientCarouselToggle = document.querySelector('[data-client-carousel-toggle]');
+const clientCarouselLabel = document.querySelector('[data-client-carousel-label]');
+
+if (clientCarousel && clientCarouselTrack && clientLogoSet) {
+  const duplicateLogoSet = clientLogoSet.cloneNode(true);
+  duplicateLogoSet.removeAttribute('data-client-logo-set');
+  duplicateLogoSet.setAttribute('aria-hidden', 'true');
+  duplicateLogoSet.querySelectorAll('img').forEach(image => {
+    image.alt = '';
+    image.loading = 'lazy';
+  });
+  clientCarouselTrack.appendChild(duplicateLogoSet);
+  clientCarousel.classList.add('is-ready');
+}
+
+if (clientCarousel && clientCarouselToggle && clientCarouselLabel) {
+  clientCarouselToggle.addEventListener('click', () => {
+    const isPaused = clientCarousel.classList.toggle('is-paused');
+    clientCarouselToggle.setAttribute('aria-pressed', String(isPaused));
+    clientCarouselLabel.textContent = isPaused ? 'Play motion' : 'Pause motion';
+  });
+}
+
 const galleries = {
   corporate: {
     category: 'Corporate',
