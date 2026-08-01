@@ -102,7 +102,8 @@ function renderGallery() {
 function openGallery(key, trigger) {
   activeGallery = galleries[key];
   if (!activeGallery || !galleryModal) return;
-  activeIndex = 0;
+  const requestedIndex = Number(trigger?.dataset.galleryIndex);
+  activeIndex = Number.isInteger(requestedIndex) && requestedIndex >= 0 && requestedIndex < activeGallery.images.length ? requestedIndex : 0;
   lastFocusedProject = trigger;
   renderGallery();
   galleryModal.hidden = false;
