@@ -45,6 +45,40 @@ if (clientCarousel && clientCarouselToggle && clientCarouselLabel) {
   });
 }
 
+const customerShowcaseTabs = Array.from(document.querySelectorAll('[data-customer-tab]'));
+const customerShowcasePanels = Array.from(document.querySelectorAll('[data-customer-panel]'));
+
+function activateCustomerShowcase(tab, shouldFocus = false) {
+  const selectedCustomer = tab.dataset.customerTab;
+
+  customerShowcaseTabs.forEach(customerTab => {
+    const isActive = customerTab === tab;
+    customerTab.classList.toggle('active', isActive);
+    customerTab.setAttribute('aria-selected', String(isActive));
+    customerTab.tabIndex = isActive ? 0 : -1;
+  });
+
+  customerShowcasePanels.forEach(panel => {
+    panel.hidden = panel.dataset.customerPanel !== selectedCustomer;
+  });
+
+  if (shouldFocus) tab.focus();
+}
+
+customerShowcaseTabs.forEach((tab, index) => {
+  tab.addEventListener('click', () => activateCustomerShowcase(tab));
+  tab.addEventListener('keydown', event => {
+    let nextIndex = index;
+    if (event.key === 'ArrowRight') nextIndex = (index + 1) % customerShowcaseTabs.length;
+    if (event.key === 'ArrowLeft') nextIndex = (index - 1 + customerShowcaseTabs.length) % customerShowcaseTabs.length;
+    if (event.key === 'Home') nextIndex = 0;
+    if (event.key === 'End') nextIndex = customerShowcaseTabs.length - 1;
+    if (nextIndex === index) return;
+    event.preventDefault();
+    activateCustomerShowcase(customerShowcaseTabs[nextIndex], true);
+  });
+});
+
 const galleries = {
   corporate: {
     category: 'Corporate',

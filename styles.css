@@ -167,6 +167,31 @@ footer { background:#11110f; color:white; padding:60px 0; }
 .portfolio-intro-grid { display:grid; grid-template-columns:.42fr 1.12fr .9fr; gap:48px; align-items:start; }
 .portfolio-intro h2 { margin:0; font-family:"Libre Franklin", Inter, sans-serif; font-size:clamp(3rem, 5vw, 5.5rem); line-height:.96; letter-spacing:-.045em; text-transform:uppercase; }
 .portfolio-intro-grid > p:last-child { margin:0; color:#5f594f; font-size:1.08rem; }
+.portfolio-customer-showcase { padding:112px 0 126px; background:#e8e0d0; color:var(--ink); }
+.customer-showcase-heading { display:flex; justify-content:space-between; align-items:end; gap:54px; margin-bottom:48px; }
+.customer-showcase-heading > div { max-width:850px; }
+.customer-showcase-heading h2 { margin:0; font-family:"Libre Franklin", Inter, sans-serif; font-size:clamp(3rem, 5.8vw, 6rem); line-height:.95; letter-spacing:-.05em; text-transform:uppercase; }
+.customer-showcase-heading > p { max-width:410px; margin:0; color:#686157; }
+.customer-showcase-tabs { display:flex; overflow-x:auto; border-bottom:1px solid rgba(23,23,20,.24); scrollbar-width:none; }
+.customer-showcase-tabs::-webkit-scrollbar { display:none; }
+.customer-showcase-tab { flex:1 0 auto; min-width:190px; display:flex; justify-content:center; align-items:center; gap:12px; border:0; border-right:1px solid rgba(23,23,20,.18); padding:20px 26px; background:rgba(255,255,255,.24); color:#5c554b; font:800 .78rem/1 Inter, sans-serif; letter-spacing:.1em; text-transform:uppercase; cursor:pointer; transition:background .2s ease, color .2s ease; }
+.customer-showcase-tab:first-child { border-left:1px solid rgba(23,23,20,.18); }
+.customer-showcase-tab span { color:var(--rust); font-family:"Bebas Neue", sans-serif; font-size:1.5rem; letter-spacing:0; }
+.customer-showcase-tab:hover, .customer-showcase-tab:focus-visible { background:#fffaf0; color:var(--ink); outline:0; }
+.customer-showcase-tab:focus-visible { box-shadow:inset 0 0 0 3px var(--gold); }
+.customer-showcase-tab.active { background:var(--ink); color:white; }
+.customer-showcase-tab.active span { color:var(--gold); }
+.customer-showcase-panels { border:1px solid rgba(23,23,20,.18); border-top:0; background:#f6f0e5; }
+.customer-showcase-panel { padding:34px; animation:customerShowcaseReveal .32s ease both; }
+.customer-showcase-panel[hidden] { display:none; }
+.customer-showcase-panel-heading { display:flex; justify-content:space-between; align-items:end; gap:24px; margin-bottom:28px; padding-bottom:20px; border-bottom:1px solid rgba(23,23,20,.16); }
+.customer-showcase-panel-heading p { margin:0; font-family:"Libre Franklin", Inter, sans-serif; font-size:clamp(2rem, 4vw, 3.8rem); line-height:1; letter-spacing:-.04em; text-transform:uppercase; }
+.customer-showcase-panel-heading span { color:#686157; font-size:.76rem; font-weight:800; letter-spacing:.1em; text-transform:uppercase; }
+.customer-showcase-images { display:grid; grid-template-columns:1fr 1fr; gap:18px; align-items:start; }
+.customer-showcase-images figure { margin:0; overflow:hidden; border:1px solid rgba(23,23,20,.14); background:white; box-shadow:0 22px 48px rgba(43,35,23,.1); }
+.customer-showcase-images figure:nth-child(2) { margin-top:56px; }
+.customer-showcase-images img { display:block; width:100%; height:auto; }
+@keyframes customerShowcaseReveal { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
 .portfolio-collection { padding:112px 0; }
 .portfolio-collection-light { background:var(--paper); color:var(--ink); }
 .portfolio-collection-dark { background:#171714; color:white; }
@@ -455,6 +480,7 @@ footer { background:#11110f; color:white; padding:60px 0; }
   .open-image-grid { grid-template-columns:repeat(2,1fr); }
   .review-grid { grid-template-columns:1fr; }
   .portfolio-intro-grid { grid-template-columns:1fr; gap:26px; }
+  .customer-showcase-heading { align-items:start; flex-direction:column; }
   .portfolio-collection-heading { align-items:start; flex-direction:column; }
   .portfolio-image-grid { grid-auto-rows:78px; }
   .portfolio-video-inner { grid-template-columns:auto 1fr; }
@@ -540,6 +566,16 @@ footer { background:#11110f; color:white; padding:60px 0; }
   .portfolio-hero-inner > p:not(.eyebrow) { font-size:1rem; }
   .portfolio-intro { padding:76px 0; }
   .portfolio-intro h2 { font-size:3.2rem; }
+  .portfolio-customer-showcase { padding:76px 0 84px; }
+  .customer-showcase-heading { gap:22px; margin-bottom:30px; }
+  .customer-showcase-heading h2 { font-size:3.25rem; }
+  .customer-showcase-tab { flex:1 1 0; min-width:0; justify-content:center; gap:5px; padding:14px 8px; font-size:.64rem; letter-spacing:.05em; }
+  .customer-showcase-tab span { font-size:1.25rem; }
+  .customer-showcase-panel { padding:14px; }
+  .customer-showcase-panel-heading { align-items:start; flex-direction:column; gap:10px; margin-bottom:14px; padding:10px 4px 18px; }
+  .customer-showcase-panel-heading p { font-size:2.25rem; }
+  .customer-showcase-images { grid-template-columns:1fr; gap:12px; }
+  .customer-showcase-images figure:nth-child(2) { margin-top:0; }
   .portfolio-collection { padding:76px 0; }
   .portfolio-collection-heading { gap:22px; margin-bottom:30px; }
   .portfolio-collection-heading h2 { font-size:3.25rem; }
