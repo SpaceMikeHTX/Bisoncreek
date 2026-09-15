@@ -1,3 +1,34 @@
+const heroSlides = Array.from(document.querySelectorAll('.home-hero-slide'));
+const heroControls = document.querySelector('.home-hero-controls');
+if (heroSlides.length && heroControls) {
+  const selectors = Array.from(heroControls.querySelectorAll('[data-hero-slide]'));
+  const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let paused = motionPreference.matches;
+  let current = 0;
+  let timer;
+  let request = 0;
+  async function showHero(index) {
+    const thisRequest = ++request;
+    try { await heroSlides[index].decode(); } catch { return; }
+    if (thisRequest !== request) return;
+    current = index;
+    heroSlides.forEach((slide, i) => {
+      slide.classList.toggle('is-active', i === current);
+      slide.setAttribute('aria-hidden', String(i !== current));
+      selectors[i].setAttribute('aria-pressed', String(i === current));
+    });
+  }
+  function scheduleHero() {
+    clearInterval(timer);
+    if (!paused && !document.hidden) timer = setInterval(() => showHero((current + 1) % heroSlides.length), 6000);
+  }
+  selectors.forEach((button, i) => button.addEventListener('click', async () => { clearInterval(timer); await showHero(i); scheduleHero(); }));
+  document.addEventListener('visibilitychange', scheduleHero);
+  motionPreference.addEventListener('change', () => { paused = motionPreference.matches; scheduleHero(); });
+  heroControls.hidden = false;
+  scheduleHero();
+}
+
 const navToggle = document.querySelector('.nav-toggle');
 const nav = document.querySelector('.site-nav');
 
@@ -88,17 +119,22 @@ const galleries = {
   westRodeo: {
     category: 'West and Rodeo',
     title: 'Ranch, rodeo, and field stories',
-    images: ['western-01.jpg', 'western-02.jpg', 'western-03.jpg', 'western-04.jpg', 'outdoor-01.jpg', 'outdoor-02.jpg', 'outdoor-03.jpg', 'outdoor-04.jpg', 'outdoor-05.jpg']
+    images: ['western-01.jpg', 'western-02.jpg', 'western-03.jpg', 'western-04.jpg', 'outdoor-01.jpg', 'outdoor-02.jpg', 'outdoor-03.jpg', 'outdoor-04.jpg', 'outdoor-05.jpg', 'western-update-1.jpg', 'western-update-2.jpg', 'western-update-3.jpg', 'western-update-4.jpg', 'western-update-5.jpg', 'western-update-6.jpg']
+  },
+  outdoors: {
+    category: 'Outdoors',
+    title: 'Hunting, fishing, and life outside',
+    images: ['outdoors-01.jpg', 'outdoors-02.jpg', 'outdoors-03.jpg', 'outdoors-04.jpg', 'outdoors-05.jpg', 'outdoors-06.jpg', 'outdoors-07.jpg', 'outdoors-08.jpg', 'outdoors-09.jpg']
   },
   brand: {
     category: 'Brand',
     title: 'Campaign Content',
-    images: ['brand-01.jpg', 'brand-02.jpg', 'brand-03.jpg']
+    images: ['brand-01.jpg', 'brand-02.jpg', 'brand-03.jpg', 'outdoors-07.jpg', 'outdoors-08.jpg', 'outdoors-09.jpg']
   },
   action: {
     category: 'Action Adventure',
     title: 'Movement, grit, and momentum',
-    images: ['action-01.jpg', 'action-02.jpg', 'action-03.jpg', 'action-04.jpg', 'action-05.jpg', 'action-06.jpg', 'action-07.jpg', 'action-08.jpg', 'action-09.jpg', 'action-10.jpg', 'action-11.jpg', 'action-12.jpg']
+    images: ['action-01.jpg', 'action-02.jpg', 'action-03.jpg', 'action-04.jpg', 'action-05.jpg', 'action-06.jpg', 'action-07.jpg', 'action-08.jpg', 'action-09.jpg', 'action-10.jpg', 'action-11.jpg', 'action-12.jpg', 'adventure-update-1.jpg', 'adventure-update-2.jpg', 'adventure-update-3.jpg', 'adventure-update-4.jpg', 'adventure-update-5.jpg']
   }
 };
 
