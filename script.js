@@ -83,7 +83,7 @@ const galleries = {
   corporate: {
     category: 'Corporate',
     title: 'People Behind the Operation',
-    images: ['corporate-01.jpg', 'corporate-02.jpg', 'corporate-03.jpg', 'industrial-01.jpg', 'industrial-02.jpg', 'industrial-03.jpg']
+    images: ['corporate-01.jpg', 'corporate-02.jpg', 'corporate-03.jpg', 'industrial-01.jpg', 'industrial-02.jpg', 'industrial-03.jpg', 'aviation-aircraft.jpg', 'aviation-cockpit.jpg', 'aviation-instruction.jpg', 'aviation-classroom.jpg', 'aviation-simulators.jpg', 'aviation-hangar.jpg']
   },
   westRodeo: {
     category: 'West and Rodeo',
