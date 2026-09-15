@@ -13,6 +13,24 @@ html { scroll-behavior: smooth; overflow-x:hidden; }
 body { margin: 0; background: var(--paper); color: var(--ink); font-family: Inter, Arial, sans-serif; line-height: 1.6; overflow-x:hidden; }
 body.gallery-open { overflow: hidden; }
 img { max-width: 100%; display: block; }
+.home-hero-gallery { position:relative; margin-top:76px; height:clamp(480px,76svh,900px); background:var(--paper); overflow:hidden; }
+.home-hero-slide { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity 1.2s ease; }
+.home-hero-slide.is-active { opacity:1; }
+.home-hero-gallery::after { content:""; position:absolute; inset:0; pointer-events:none; background:linear-gradient(to bottom,transparent 65%,var(--paper) 100%); }
+.home-hero-intro { background:var(--paper); padding:8px 0 76px; }
+.home-hero-intro h1 { max-width:1050px; margin:24px 0 0; font:800 clamp(2.7rem,6vw,6rem)/.98 "Libre Franklin",Inter,sans-serif; letter-spacing:-.045em; text-transform:uppercase; }
+.home-hero-intro .hero-lead { color:#686157; }
+.home-hero-intro .btn-ghost { color:var(--ink); border-color:var(--ink); }
+.home-hero-intro .hero-proof { border-color:var(--line); }
+.home-hero-intro .hero-proof span { color:#686157; }
+.home-hero-controls { display:flex; justify-content:center; gap:0; margin-bottom:24px; }
+.home-hero-controls[hidden] { display:none; }
+.home-hero-controls button { display:grid; place-items:center; width:44px; height:44px; background:transparent; border:0; padding:0; cursor:pointer; }
+.home-hero-controls button::before { content:""; width:7px; height:7px; border-radius:50%; background:#c7c1b6; }
+.home-hero-controls button[aria-pressed="true"]::before { background:var(--rust); }
+.home-hero-controls button:focus-visible { outline:3px solid var(--gold); outline-offset:3px; }
+@media(max-width:700px) { .home-hero-gallery { height:65svh; min-height:390px; max-height:650px; } .home-hero-intro { padding-bottom:48px; } }
+@media(prefers-reduced-motion:reduce) { .home-hero-slide { transition:none; } }
 .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
 a { color: inherit; text-decoration: none; }
 button, input, textarea, select { font: inherit; }
@@ -104,6 +122,29 @@ button, input, textarea, select { font: inherit; }
 .project-label span { font-size:.72rem; font-weight:800; letter-spacing:.16em; text-transform:uppercase; color:#f1c77c; }
 .project-label strong { display:block; font-size:1.65rem; line-height:1.1; }
 .project-label em { font-style:normal; color:rgba(255,255,255,.72); font-size:.85rem; }
+.work-expanded > .container { width:calc(100% - 64px); max-width:1680px; }
+.work-expanded .section-heading h2 { font-size:clamp(3.5rem, 7vw, 7rem); line-height:.95; letter-spacing:-.05em; text-transform:uppercase; }
+.work-expanded .portfolio-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
+.work-expanded .project { grid-column:auto; min-height:560px; }
+.work-expanded .project-corporate { grid-column:auto; min-height:560px; }
+.work-expanded .project-outdoors img { object-position:center 35%; }
+.portfolio-outdoors-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; max-width:1120px; margin-inline:auto; }
+.portfolio-outdoors-grid .portfolio-frame { grid-column:auto; grid-row:auto; aspect-ratio:2 / 3; }
+@media (max-width:700px) {
+  .portfolio-outdoors-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
+}
+.work-expanded .project::after { background:linear-gradient(180deg,transparent 35%,rgba(9,9,8,.24) 60%,rgba(9,9,8,.86)); }
+.work-expanded .project-label { left:36px; right:36px; bottom:36px; gap:12px; }
+.work-expanded .project-label span { font-size:.85rem; }
+.work-expanded .project-label strong { max-width:760px; font-family:"Libre Franklin",Inter,sans-serif; font-size:clamp(2rem,3.6vw,3.8rem); letter-spacing:-.035em; text-transform:uppercase; }
+.work-expanded .project-label em::after { content:" / View gallery →"; color:white; }
+@media (max-width:700px) {
+  .work-expanded > .container { width:calc(100% - 32px); }
+  .work-expanded .portfolio-grid { grid-template-columns:1fr; }
+  .work-expanded .project, .work-expanded .project-corporate { grid-column:1; min-height:460px; }
+  .work-expanded .project-label { left:22px; right:22px; bottom:26px; }
+  .work-expanded .project-label strong { font-size:2rem; }
+}
 .gallery-modal[hidden] { display:none; }
 .gallery-modal { position:fixed; inset:0; z-index:2000; display:grid; place-items:center; padding:24px; }
 .gallery-backdrop { position:absolute; inset:0; background:rgba(9,9,8,.82); backdrop-filter:blur(10px); }
@@ -213,6 +254,15 @@ footer { background:#11110f; color:white; padding:60px 0; }
 .portfolio-frame:hover img, .portfolio-frame:focus-visible img { transform:scale(1.035); filter:saturate(1.04) contrast(1.03); }
 .portfolio-frame:hover::after, .portfolio-frame:focus-visible::after { opacity:1; transform:translateY(0); }
 .portfolio-frame:focus-visible { outline:3px solid var(--gold); outline-offset:4px; z-index:2; }
+.portfolio-preview-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; max-width:1120px; margin-inline:auto; }
+.portfolio-preview-grid .portfolio-frame { grid-column:auto; grid-row:auto; aspect-ratio:4 / 5; }
+.portfolio-preview-brand { max-width:840px; }
+.portfolio-preview-brand .portfolio-frame { aspect-ratio:507 / 760; }
+.portfolio-collection-footer { margin-top:32px; text-align:center; }
+@media(max-width:700px) {
+  .portfolio-preview-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
+  .portfolio-preview-brand { max-width:560px; }
+}
 .portfolio-brand-grid { display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:24px; max-width:840px; margin-inline:auto; }
 .portfolio-brand-grid .portfolio-frame { grid-column:auto; grid-row:auto; aspect-ratio:507 / 760; }
 .portfolio-video-coming { position:relative; isolation:isolate; min-height:560px; display:grid; align-items:center; overflow:hidden; color:white; background:#10100e url("assets/portfolio/action-05.jpg") center / cover no-repeat; }

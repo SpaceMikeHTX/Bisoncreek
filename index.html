@@ -32,12 +32,23 @@
   </header>
 
   <main id="top">
-    <section class="hero">
-      <div class="hero-overlay"></div>
-      <div class="container hero-grid">
+    <section class="home-hero-gallery" aria-label="Featured photography" aria-roledescription="carousel">
+      <img class="home-hero-slide is-active" src="assets/hero/corporate.jpg" alt="Piper aircraft inside the Texas Flight hangar with light falling across its wing" fetchpriority="high" />
+      <img class="home-hero-slide" src="assets/hero/western.jpg" alt="Two women riding horses across open country in warm evening light" style="object-position:65% center" aria-hidden="true" />
+      <img class="home-hero-slide" src="assets/hero/outdoors.jpg" alt="Hunter hiking into a mountain valley with a loaded pack" style="object-position:center 38%" aria-hidden="true" />
+      <img class="home-hero-slide" src="assets/portfolio/action-12.jpg" alt="Skydivers leaving an aircraft above the clouds" aria-hidden="true" />
+    </section>
+    <section class="home-hero-intro" aria-labelledby="home-tagline">
+      <div class="container">
+        <div class="home-hero-controls" aria-label="Featured photography controls" hidden>
+          <button type="button" data-hero-slide="0" aria-label="Show Corporate photo" aria-pressed="true"></button>
+          <button type="button" data-hero-slide="1" aria-label="Show Western and Rodeo photo" aria-pressed="false"></button>
+          <button type="button" data-hero-slide="2" aria-label="Show Outdoors photo" aria-pressed="false"></button>
+          <button type="button" data-hero-slide="3" aria-label="Show Action Adventure photo" aria-pressed="false"></button>
+        </div>
         <div class="hero-copy">
           <p class="eyebrow">Photography - Video - Brand Content</p>
-          <h1>Real stories deserve real images.</h1>
+          <h1 id="home-tagline">Real stories deserve real images.</h1>
           <p class="hero-lead">Bison Creek Media creates high-impact visual libraries for businesses, ranches, brands, and organizations that refuse to let generic content tell their story.</p>
           <div class="hero-actions">
             <a href="#contact" class="btn btn-primary">Book a Project</a>
@@ -86,31 +97,31 @@
       </div>
     </section>
 
-    <section id="work" class="section work">
+    <section id="work" class="section work work-expanded">
       <div class="container">
         <div class="section-heading">
           <div>
             <p class="eyebrow">Selected Work</p>
-            <h2>Built to feel credible, capable, and human.</h2>
+            <h2>Work that speaks.</h2>
           </div>
-          <p>Click any project to open the full image gallery.</p>
+          <p>Real people. Remarkable places. Explore the stories behind the images.</p>
         </div>
         <div class="portfolio-grid">
           <button class="project project-large project-corporate" type="button" data-gallery="corporate" data-gallery-index="6" aria-haspopup="dialog">
             <img src="assets/portfolio/aviation-aircraft.jpg" alt="Texas Flight Airline Academy aircraft reflected on the apron outside a hangar" loading="lazy" />
             <span class="project-label"><span>Corporate</span><strong>People Behind the Operation</strong><em>12 images</em></span>
           </button>
-          <button class="project project-west-rodeo" type="button" data-gallery="westRodeo" aria-haspopup="dialog">
-            <img src="assets/portfolio/western-02.jpg" alt="West and Rodeo project preview" loading="lazy" />
-            <span class="project-label"><span>West and Rodeo</span><strong>Ranch, rodeo, and field stories</strong><em>9 images</em></span>
+          <button class="project project-west-rodeo" type="button" data-gallery="westRodeo" data-gallery-index="13" aria-haspopup="dialog">
+            <img src="assets/portfolio/western-update-5.jpg" alt="Two women riding horses across open country" loading="lazy" />
+            <span class="project-label"><span>West and Rodeo</span><strong>Ranch, rodeo, and field stories</strong><em>15 images</em></span>
           </button>
-          <button class="project project-brand" type="button" data-gallery="brand" aria-haspopup="dialog">
-            <img src="assets/portfolio/brand-01.jpg" alt="Brand content project preview" loading="lazy" />
-            <span class="project-label"><span>Brand</span><strong>Campaign Content</strong><em>3 images</em></span>
+          <button class="project project-outdoors" type="button" data-gallery="outdoors" aria-haspopup="dialog">
+            <img src="assets/portfolio/outdoors-01.jpg" alt="Hunter carrying a pack through a mountain landscape" loading="lazy" />
+            <span class="project-label"><span>Outdoors</span><strong>Hunting, fishing, and life outside</strong><em>9 images</em></span>
           </button>
-          <button class="project project-action" type="button" data-gallery="action" aria-haspopup="dialog">
-            <img src="assets/portfolio/action-09.jpg" alt="Action adventure project preview" loading="lazy" />
-            <span class="project-label"><span>Action Adventure</span><strong>Movement, grit, and momentum</strong><em>12 images</em></span>
+          <button class="project project-action" type="button" data-gallery="action" data-gallery-index="15" aria-haspopup="dialog">
+            <img src="assets/portfolio/adventure-update-4.jpg" alt="Dirt bike rider performing a wheelie on a country trail" loading="lazy" />
+            <span class="project-label"><span>Action Adventure</span><strong>Movement, grit, and momentum</strong><em>17 images</em></span>
           </button>
         </div>
       </div>
