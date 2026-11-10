@@ -116,6 +116,28 @@ const galleries = {
     title: 'People Behind the Operation',
     images: ['corporate-01.jpg', 'corporate-02.jpg', 'corporate-03.jpg', 'industrial-01.jpg', 'industrial-02.jpg', 'industrial-03.jpg', 'aviation-aircraft.jpg', 'aviation-cockpit.jpg', 'aviation-instruction.jpg', 'aviation-classroom.jpg', 'aviation-simulators.jpg', 'aviation-hangar.jpg']
   },
+  aviation: {
+    category: 'Aviation & Air-to-Air',
+    title: 'A different perspective',
+    images: ['aviation-air-to-air-05.jpg', 'aviation-desktop-08.jpg', 'aviation-airliner.jpg', 'aviation-desktop-03.jpg', 'aviation-desktop-06.jpg', 'aviation-desktop-04.jpg', 'aviation-air-to-air-02.jpg', 'aviation-desktop-05.jpg', 'aviation-air-to-air-01.jpg', 'aviation-desktop-07.jpg', 'aviation-air-to-air-03.jpg', 'aviation-desktop-01.jpg', 'aviation-air-to-air-04.jpg', 'aviation-desktop-02.jpg'],
+    thumbnails: ['aviation-air-to-air-05-preview.jpg', 'aviation-desktop-08-preview.jpg', 'aviation-airliner-preview.jpg', 'aviation-desktop-03-preview.jpg', 'aviation-desktop-06-preview.jpg', 'aviation-desktop-04-preview.jpg', 'aviation-air-to-air-02-preview.jpg', 'aviation-desktop-05-preview.jpg', 'aviation-air-to-air-01-preview.jpg', 'aviation-desktop-07-preview.jpg', 'aviation-air-to-air-03-preview.jpg', 'aviation-desktop-01-preview.jpg', 'aviation-air-to-air-04-preview.jpg', 'aviation-desktop-02-preview.jpg'],
+    descriptions: [
+      'Red and white Piper aircraft banking above sunlit countryside',
+      'Wide view of an airliner cockpit with instrument panels and the flight deck visible',
+      'United airliner and its reflection on a wet airport apron beneath a colorful sky',
+      'Aircraft tail reflected in a puddle beneath golden sunset clouds',
+      'Fighter jet banking beneath blue sky and dramatic clouds',
+      'Four people standing together beside a United Express aircraft on the airport apron',
+      'Headset-wearing occupant in a sunlit cockpit with countryside visible through the window',
+      'Black-and-white photograph of a military transport aircraft climbing through the sky',
+      'Texas Flight Airline Academy Piper photographed through an airplane window above the countryside',
+      'Black-and-white photograph of a fighter jet leaving vapor trails beneath dark clouds',
+      'Close air-to-air view of a pilot flying a red and white Piper aircraft',
+      'Two headset-wearing occupants at the flight controls of a small aircraft above the countryside',
+      'Piper aircraft seen from below against an expansive blue and golden sky',
+      'Air-to-air view of a small aircraft framed beneath the wing of another airplane'
+    ]
+  },
   westRodeo: {
     category: 'West and Rodeo',
     title: 'Ranch, rodeo, and field stories',
@@ -161,10 +183,10 @@ function renderGallery() {
   galleryTitle.textContent = activeGallery.title;
   galleryCounter.textContent = `Image ${activeIndex + 1} of ${activeGallery.images.length}`;
   galleryImage.src = imagePath(current);
-  galleryImage.alt = `${activeGallery.title} image ${activeIndex + 1}`;
+  galleryImage.alt = activeGallery.descriptions?.[activeIndex] || `${activeGallery.title} image ${activeIndex + 1}`;
   galleryThumbs.innerHTML = activeGallery.images.map((image, index) => `
     <button type="button" class="${index === activeIndex ? 'active' : ''}" data-index="${index}" aria-label="Show image ${index + 1}">
-      <img src="${imagePath(image)}" alt="" loading="lazy" />
+      <img src="${imagePath(activeGallery.thumbnails?.[index] || image)}" alt="" loading="lazy" />
     </button>
   `).join('');
 }
