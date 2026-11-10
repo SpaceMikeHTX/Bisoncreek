@@ -259,6 +259,21 @@ footer { background:#11110f; color:white; padding:60px 0; }
 .portfolio-preview-brand { max-width:840px; }
 .portfolio-preview-brand .portfolio-frame { aspect-ratio:507 / 760; }
 .portfolio-collection-footer { margin-top:32px; text-align:center; }
+.portfolio-collection-aviation { background:#e8e0d0; color:var(--ink); scroll-margin-top:76px; }
+.portfolio-collection-aviation .portfolio-collection-heading h2 { font-size:clamp(2.6rem, 5.8vw, 6rem); letter-spacing:-.035em; }
+.portfolio-aviation-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px; max-width:1120px; margin-inline:auto; align-items:start; }
+.portfolio-aviation-grid .portfolio-frame { grid-column:auto; grid-row:auto; aspect-ratio:auto; }
+.portfolio-aviation-grid .portfolio-frame img { display:block; width:100%; height:auto; object-fit:contain; transform:none; filter:none; }
+.portfolio-aviation-grid .portfolio-frame::after { content:"View photo"; }
+.portfolio-aviation-grid .portfolio-frame:focus-visible { outline-color:var(--ink); }
+.work-aviation-feature { display:grid; grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr); gap:clamp(24px,4vw,64px); align-items:center; margin-top:40px; padding-top:40px; border-top:1px solid var(--line); }
+.work-aviation-feature img { display:block; width:100%; height:auto; }
+.work-aviation-feature h3 { margin:0; font-family:"Libre Franklin",Inter,sans-serif; font-size:clamp(1.8rem,3.5vw,3.5rem); line-height:1.05; letter-spacing:-.035em; text-transform:uppercase; }
+.work-aviation-feature p { max-width:44ch; margin:18px 0 24px; color:#686157; }
+@media (max-width:600px) {
+  .portfolio-aviation-grid { grid-template-columns:1fr; gap:16px; }
+  .work-aviation-feature { grid-template-columns:1fr; gap:24px; }
+}
 @media(max-width:700px) {
   .portfolio-preview-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
   .portfolio-preview-brand { max-width:560px; }
