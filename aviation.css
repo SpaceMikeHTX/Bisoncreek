@@ -1,0 +1,131 @@
+/* Aviation extends the existing Bison Creek palette and type system. */
+@font-face { font-family:Inter; font-style:normal; font-weight:400 800; font-display:swap; src:url('assets/fonts/inter-latin-variable.woff2') format('woff2'); }
+@font-face { font-family:"Libre Franklin"; font-style:normal; font-weight:800; font-display:swap; src:url('assets/fonts/libre-franklin-latin-800.woff2') format('woff2'); }
+.aviation-page { background:var(--ink); color:var(--paper); }
+.aviation-page ::selection { background:var(--gold); color:var(--ink); }
+.aviation-page :focus-visible { outline:3px solid var(--gold); outline-offset:5px; }
+.aviation-page svg { width:24px; height:24px; fill:none; stroke:currentColor; stroke-width:1.7; flex-shrink:0; }
+.aviation-page button { border-radius:0; }
+.aviation-page h1,.aviation-page h2 { font-family:"Libre Franklin",Inter,sans-serif; font-weight:800; letter-spacing:-.035em; line-height:1.04; text-transform:uppercase; margin:0; }
+.aviation-page h2 { font-size:clamp(2rem,3.05vw,3.1rem); }
+.aviation-wide { width:min(92%,1480px); margin-inline:auto; }
+.aviation-skip { position:fixed; left:20px; top:-100px; z-index:2000; padding:12px 20px; background:var(--gold); color:var(--ink); }
+.aviation-skip:focus { top:12px; }
+.aviation-hero { margin-top:76px; position:relative; isolation:isolate; min-height:336px; height:clamp(336px,22vw,470px); display:flex; align-items:center; }
+.aviation-hero-image { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 30%; z-index:-2; }
+.aviation-hero::before { content:""; position:absolute; inset:0; background:linear-gradient(90deg,rgba(10,12,12,.96) 0%,rgba(10,12,12,.85) 25%,rgba(10,12,12,.18) 52%,transparent 78%); z-index:-1; }
+.aviation-hero-copy { padding-block:24px; }
+.aviation-hero h1 { font-size:clamp(2.6rem,3.15vw,4.2rem); }
+.aviation-hero p { max-width:31rem; font-size:clamp(1rem,1.24vw,1.24rem); line-height:1.4; color:var(--cream); margin:12px 0 18px; }
+.simulator-feature { display:grid; grid-template-columns:27% 44% 29%; min-height:300px; height:clamp(300px,20.3vw,410px); padding:8px 2% 8px 4%; background:#141412; }
+.simulator-feature-copy { align-self:center; padding:14px 12px 14px 0; z-index:1; }
+.simulator-feature-copy::before { content:""; display:block; width:48px; height:4px; background:var(--gold); margin-bottom:20px; }
+.simulator-feature-copy p { margin:12px 0 18px; font-size:clamp(.88rem,1vw,1rem); color:var(--cream); }
+.aviation-text-link { display:inline-flex; gap:12px; align-items:center; min-height:44px; font-weight:600; color:var(--gold); text-underline-offset:5px; }
+.aviation-text-link:hover { text-decoration:underline; }
+.simulator-feature>a { display:block; min-width:0; overflow:hidden; height:100%; }
+.simulator-feature img { width:100%; height:100%; object-fit:cover; }
+.simulator-facility { margin-left:-12%; clip-path:polygon(12% 0,100% 0,88% 100%,0 100%); }
+.simulator-instructor { margin-left:-12%; clip-path:polygon(12% 0,100% 0,100% 100%,0 100%); }
+.simulator-instructor img { object-position:center 43%; }
+.simulator-feature>a:focus-visible { clip-path:none; outline-offset:-5px; }
+.aviation-perspective { display:grid; grid-template-columns:67% 33%; background:var(--paper); color:var(--ink); }
+.perspective-photo { display:block; min-height:300px; }
+.perspective-photo img { width:100%; height:100%; max-height:330px; object-fit:cover; object-position:center 52%; }
+.perspective-copy { align-self:center; padding:20px 12% 20px 8%; }
+.perspective-copy .aviation-text-link,.aircraft-collection .aviation-text-link { color:#875c1d; }
+.perspective-inquiry { border-top:1px solid var(--line); margin-top:10px; padding-top:10px; }
+.perspective-inquiry p { margin:0 0 14px; font-weight:500; }
+.perspective-inquiry .btn { padding-inline:16px; letter-spacing:.035em; }
+.aviation-collection { padding:88px 0; scroll-margin-top:76px; }
+.aviation-collection-heading { display:flex; justify-content:space-between; gap:24px; align-items:end; margin-bottom:32px; }
+.aviation-collection-heading p { max-width:60ch; margin:18px 0 0; color:var(--sand); }
+.aviation-collection-heading>.aviation-text-link { white-space:nowrap; }
+.aviation-photo-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; }
+.aviation-photo-grid>a { display:block; background:#20201d; aspect-ratio:3/2; overflow:hidden; position:relative; }
+.aviation-photo-grid img { width:100%; height:100%; object-fit:cover; }
+.aviation-photo-grid>a::after { content:"View photograph"; position:absolute; bottom:12px; right:12px; padding:5px 10px; font-size:.75rem; background:rgba(23,23,20,.9); color:var(--paper); opacity:0; }
+.aviation-photo-grid>a:hover::after,.aviation-photo-grid>a:focus-visible::after { opacity:1; }
+.aviation-collection-footer { margin-top:28px; display:flex; justify-content:space-between; align-items:center; gap:20px; }
+.aviation-collection-footer p { margin:0; color:var(--sand); }
+.aviation-collection [hidden] { display:none; }
+.aircraft-collection { background:var(--cream); color:var(--ink); }
+.aircraft-collection .aviation-collection-heading p,.aircraft-collection .aviation-collection-footer p { color:#62594b; }
+.aviation-inquiry { background:var(--ink); padding:80px 0; }
+.aviation-inquiry-inner { display:flex; align-items:center; justify-content:space-between; gap:36px; }
+.aviation-inquiry p { color:var(--sand); margin:22px 0 0; }
+.aviation-inquiry .btn { flex-shrink:0; }
+.aviation-page .footer-grid>div:first-child p { color:var(--sand); }
+.aviation-lightbox { background:#11110f; color:var(--paper); border:1px solid #504b43; width:min(1440px,96vw); max-width:96vw; max-height:96dvh; padding:0; }
+.aviation-lightbox::backdrop { background:rgba(0,0,0,.9); }
+.aviation-lightbox-inner { padding:24px; }
+.aviation-lightbox-header { display:flex; align-items:start; justify-content:space-between; gap:20px; }
+.aviation-lightbox-header h2 { font-size:clamp(1.1rem,2vw,1.8rem); }
+.aviation-lightbox-header p { margin:8px 0 14px; font-variant-numeric:tabular-nums; color:var(--sand); font-size:.85rem; }
+.aviation-dialog-close,.aviation-lightbox-stage>button { background:transparent; color:var(--paper); border:1px solid #756953; min-width:48px; min-height:48px; display:flex; align-items:center; justify-content:center; cursor:pointer; }
+.aviation-dialog-close { gap:8px; padding:0 12px; }
+.aviation-dialog-close:hover,.aviation-lightbox-stage>button:hover { background:#353025; }
+.aviation-lightbox-stage>button:disabled { opacity:.35; cursor:default; background:transparent; }
+.aviation-lightbox-stage { display:grid; grid-template-columns:48px minmax(0,1fr) 48px; gap:16px; align-items:center; }
+.aviation-lightbox-stage figure { margin:0; min-width:0; }
+#aviation-full-photo { width:100%; height:calc(96dvh - 265px); min-height:120px; object-fit:contain; }
+#aviation-photo-caption { text-align:center; font-size:.85rem; line-height:1.4; margin:12px auto 0; max-width:75ch; color:var(--cream); }
+#aviation-photo-error { text-align:center; }
+#aviation-photo-error a { text-decoration:underline; }
+.aviation-lightbox-thumbs { display:flex; gap:8px; overflow-x:auto; padding:12px 4px 8px; margin-top:8px; scrollbar-color:var(--sand) #24231e; }
+.aviation-lightbox-thumbs button { padding:3px; background:transparent; border:2px solid transparent; flex:0 0 76px; cursor:pointer; }
+.aviation-lightbox-thumbs img { width:66px; height:46px; object-fit:cover; }
+.aviation-lightbox-thumbs button[aria-current="true"] { border-color:var(--gold); }
+body.aviation-dialog-open { overflow:hidden; }
+@media(max-width:1100px) and (min-width:701px) {
+  .simulator-feature { grid-template-columns:31% 40% 29%; }
+  .simulator-feature h2 { font-size:2.1rem; }
+  .simulator-feature .aviation-text-link { font-size:.85rem; }
+  .perspective-copy { padding:24px; }
+  .perspective-copy h2 { font-size:clamp(1.6rem,3vw,2rem); }
+  .perspective-copy .btn { font-size:.73rem; padding-inline:10px; }
+}
+@media(max-width:700px) {
+  .aviation-page .brand-text { display:block; font-size:.78rem; letter-spacing:.02em; }
+  .aviation-page .brand { gap:8px; }
+  .aviation-wide { width:calc(100% - 36px); }
+  .aviation-hero { display:flex; flex-direction:column; height:auto; min-height:0; }
+  .aviation-hero-image { position:relative; z-index:0; aspect-ratio:3/2; height:auto; object-fit:contain; }
+  .aviation-hero::before { display:none; }
+  .aviation-hero-copy { padding:28px 0 36px; }
+  .aviation-hero h1 { font-size:clamp(2rem,8.2vw,3.35rem); }
+  .aviation-hero p { margin:18px 0 24px; font-size:1rem; }
+  .aviation-desktop-break { display:none; }
+  .simulator-feature { height:auto; grid-template-columns:1fr 1fr; padding:30px 18px 20px; gap:12px; }
+  .simulator-feature-copy { grid-column:1/-1; padding:0 0 12px; }
+  .simulator-feature h2 { font-size:clamp(1.9rem,7.6vw,2.2rem); }
+  .simulator-feature h2 br { display:none; }
+  .simulator-feature>a { clip-path:none; margin:0; height:230px; }
+  .simulator-feature .simulator-facility { grid-column:1/-1; height:auto; }
+  .simulator-facility img { height:auto; object-fit:contain; }
+  .simulator-feature .simulator-instructor { grid-column:1/-1; height:auto; }
+  .simulator-instructor img { max-height:420px; object-fit:contain; }
+  .aviation-perspective { grid-template-columns:1fr; }
+  .perspective-photo { min-height:0; }
+  .perspective-photo img { max-height:none; height:auto; }
+  .perspective-copy { padding:30px 18px 36px; }
+  .perspective-copy h2 { font-size:2.25rem; }
+  .aviation-collection { padding:56px 0; }
+  .aviation-collection-heading { flex-direction:column; align-items:start; gap:14px; margin-bottom:22px; }
+  .aviation-collection-heading h2 { font-size:clamp(1.9rem,7.2vw,2.8rem); }
+  .aviation-collection-heading p { margin-top:16px; }
+  .aviation-photo-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
+  .aviation-photo-grid>a { aspect-ratio:4/5; }
+  .aviation-collection-footer { align-items:start; flex-direction:column; }
+  .aviation-inquiry { padding:56px 0; }
+  .aviation-inquiry-inner { flex-direction:column; align-items:start; gap:26px; }
+  .aviation-inquiry h2 { font-size:clamp(1.85rem,7vw,2.6rem); }
+  .aviation-lightbox-inner { padding:14px; }
+  .aviation-dialog-close { font-size:.85rem; padding:0 8px; }
+  .aviation-lightbox-stage { grid-template-columns:1fr 1fr; gap:12px; }
+  .aviation-lightbox-stage figure { grid-column:1/-1; grid-row:1; }
+  .aviation-lightbox-stage>button { grid-row:2; }
+  #aviation-full-photo { height:calc(96dvh - 345px); }
+  #aviation-photo-caption { font-size:.78rem; }
+}
+@media(prefers-reduced-motion:reduce) { .aviation-page { scroll-behavior:auto; } }
