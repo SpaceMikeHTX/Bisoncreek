@@ -69,7 +69,6 @@
 .aviation-lightbox-stage { display:grid; grid-template-columns:48px minmax(0,1fr) 48px; gap:16px; align-items:center; }
 .aviation-lightbox-stage figure { margin:0; min-width:0; }
 #aviation-full-photo { width:100%; height:calc(96dvh - 265px); min-height:120px; object-fit:contain; }
-#aviation-photo-caption { text-align:center; font-size:.85rem; line-height:1.4; margin:12px auto 0; max-width:75ch; color:var(--cream); }
 #aviation-photo-error { text-align:center; }
 #aviation-photo-error a { text-decoration:underline; }
 .aviation-lightbox-thumbs { display:flex; gap:8px; overflow-x:auto; padding:12px 4px 8px; margin-top:8px; scrollbar-color:var(--sand) #24231e; }
@@ -126,6 +125,5 @@ body.aviation-dialog-open { overflow:hidden; }
   .aviation-lightbox-stage figure { grid-column:1/-1; grid-row:1; }
   .aviation-lightbox-stage>button { grid-row:2; }
   #aviation-full-photo { height:calc(96dvh - 345px); }
-  #aviation-photo-caption { font-size:.78rem; }
 }
 @media(prefers-reduced-motion:reduce) { .aviation-page { scroll-behavior:auto; } }
