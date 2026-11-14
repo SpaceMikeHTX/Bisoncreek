@@ -4,7 +4,6 @@
   if (!collections || !dialog || typeof dialog.showModal !== 'function') return;
 
   const fullPhoto = document.getElementById('aviation-full-photo');
-  const caption = document.getElementById('aviation-photo-caption');
   const counter = document.getElementById('aviation-photo-counter');
   const title = document.getElementById('aviation-lightbox-title');
   const thumbs = dialog.querySelector('.aviation-lightbox-thumbs');
@@ -21,7 +20,6 @@
     fullPhoto.hidden = false;
     fullPhoto.alt = photo.alt;
     fullPhoto.src = photo.src;
-    caption.textContent = photo.alt;
     counter.textContent = `${index + 1} of ${activeCollection.photos.length} photographs`;
     error.querySelector('a').href = photo.src;
     thumbs.querySelectorAll('button').forEach((button, thumbIndex) => {
